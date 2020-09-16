@@ -1,3 +1,4 @@
+const assert = require('chai').assert
 const sinon = require('sinon')
 const Gato = require('.')
 /**
@@ -6,10 +7,29 @@ const Gato = require('.')
  *    usar mocks para console.log, 
  * 2) usar mocha hooks y usar sinon sandbox para limpiar y poder usar el espia de nuevo 
  */
-test('Que gato tan fastidioso...', async (t) => {
+let sandbox;
 
-})
+beforeEach(() => {
+    sandbox = sinon.createSandbox();
+});
 
-test('Que gato tan bonito...', async (t) => {
+afterEach(() => {
+    sandbox.restore();
+});
 
+
+it('Gato#fastidiar(), llama console.log 3 veces', () => {
+    const gato = new Gato();
+    const miauSpy = sandbox.spy(console, 'log');
+
+    gato.fastidiar();
+    assert.equal(miauSpy.callCount, 3)
+});
+
+it('Gato#serBonito(), llama a console.log 1 vez', ()=>{
+    const gato = new Gato();
+    const miauSpy = sandbox.spy(console, 'log');
+
+    gato.serBonito();
+    assert.equal(miauSpy.callCount, 1);
 })

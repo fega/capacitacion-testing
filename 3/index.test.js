@@ -30,18 +30,18 @@ describe('DELETE /gatitos/:id', () => {
  * A veces puedes usar hooks para inicializar o limpiar el estado de tus tests
  */
 
-before(function () {
-    console.log('before hook, SE EJECUTA ANTES')
-});
+// before(function () {
+//     console.log('before hook, SE EJECUTA ANTES')
+// });
 
-after(function () {
-    console.log('after hook, SE EJECUTA DESPUES')
-});
+// after(function () {
+//     console.log('after hook, SE EJECUTA DESPUES')
+// });
 
-beforeEach(function () {
-    console.log('beforeEach hook, antes de cada test')
-});
+// beforeEach(function () {
+//     console.log('beforeEach hook, antes de cada test')
+// });
 
-afterEach(function () {
-    console.log('afterEach hook, despues de cada test')
-});
+// afterEach(function () {
+//     console.log('afterEach hook, despues de cada test')
+// });

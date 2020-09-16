@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./**/*.test.js",
-    "test:coverage": "nyc mocha  ./**/*.test.js",
+    "test": "mocha --invert --grep \"#CI\" ",
+    "test:ci": "mocha",
+    "test:coverage": "nyc --reporter=lcov --reporter=text-summary mocha   ./**/*.test.js",
     "test:1": "nyc mocha  ./1/*.test.js",
     "test:2": "nyc mocha  ./2/*.test.js",
     "test:3": "nyc mocha  ./3/*.test.js"
@@ -22,6 +23,8 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.11"
   }
 }

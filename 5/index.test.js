@@ -1,3 +1,4 @@
+const assert = require('chai').assert
 const sinon = require('sinon')
 const Gato = require('.')
 /**
@@ -5,6 +6,9 @@ const Gato = require('.')
  * 1) usar sinon para asegurarse que this.miau es llamado 3 veces
  *    usar mocks para this.miau
  */
-test('Que gato tan fastidioso...', async (t) => {
-
+it('Gato#fastidiar, llama #miau 3 veces', async () => {
+    const gato = new Gato();
+    const miauSpy = sinon.spy(gato, 'miau');
+    gato.fastidiar();
+    assert.equal(miauSpy.callCount, 3)
 })
