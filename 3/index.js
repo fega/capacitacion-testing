@@ -4,14 +4,19 @@
 
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 
 
-// app.use(express.json())
+app.use(bodyParser.json({ type: 'application/*+json' }))
 
 app.get('/gatitos', (req, res) => {
 });
 
 app.post('/gatitos', (req, res) => {
+    if (!req.body.name){
+        return res.sendStatus(400)
+    } 
+    res.send({})
 });
 
 app.delete('/gatitos/:name', (req, res) => {

@@ -6,6 +6,7 @@
  */
 const app = require('.')
 const request = require('supertest')
+const assert = require('chai').assert;
 
 /**
  * Te puedes sentir tentado de implementar los tests
@@ -14,7 +15,15 @@ describe('POST /gatitos', () => {
     /**
      * Normalmente YO uso el orden de la lógica para escribir los tests
      */
-    it('INVALID BODY, no name')
+    it('BAD_REQUEST, INVALID BODY, no name', async function (){
+        this.timeout(5000);
+    
+        const r = await request(app)
+            .post('/gatitos')
+            .send({})
+        
+        assert.equal(r.status, 400);
+    })
     it('INVALID BODY, name is not string')
     it('OK')
 })
